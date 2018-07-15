@@ -1,4 +1,4 @@
-*** Settings ***
+﻿*** Settings ***
 Library           DebugLibrary
 Library           ExcelLibrary
 Library           lib/mylib.py
@@ -7,7 +7,6 @@ Variables         lib/var.py
 *** Test Cases ***
 Case-01
     [Setup]    log    case setup
-    debug
     log    hello world!
     ${x}    Set Variable    10    # 设置变量x的值为字符串10
     ${y}    Set Variable    ${10}    # 设置变量y的值为数值10
@@ -33,12 +32,3 @@ Case-02
     log    ${False}
     log    %{path}    #打印环境变量
     log    ${CURDIR}${/}mtres.txt    #文件的路径
-
-case-03
-    Open Excel    ${CURDIR}${/}testdata${/}data.xls
-    ${x}    Get Column Count    Sheet1
-    ${x}    Get Row Values    Sheet1    0
-
-case-04
-    :FOR    ${i}    in    @{DATA_ORDER_CASE_03}
-    \    ${i[0]}    ${i[1]}
