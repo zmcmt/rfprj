@@ -1,0 +1,6 @@
+*** Settings ***
+Library           DebugLibrary
+
+*** Test Cases ***
+Todo_case01
+    [Setup]    setup    Todo_item

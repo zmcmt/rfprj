@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20180708 16:23:07.948" generator="Robot 3.0.4 (Python 2.7.14 on win32)">
+<suite source="C:\Users\Auser\Desktop\mtprj" id="s1" name="Mtprj">
+<suite source="C:\Users\Auser\Desktop\mtprj\订单模块.txt" id="s1-s1" name="订单模块">
+<kw type="setup" name="setup" library="mtresource">
+<arguments>
+<arg>order_item</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>预置条件/搭建环境</arg>
+</arguments>
+<msg timestamp="20180708 16:23:08.291" level="INFO">预置条件/搭建环境</msg>
+<status status="PASS" endtime="20180708 16:23:08.291" starttime="20180708 16:23:08.291"></status>
+</kw>
+<kw name="Connect To Database" library="DatabaseLibrary">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to</doc>
+<arguments>
+<arg>pymysql</arg>
+<arg>scott</arg>
+<arg>tester</arg>
+<arg>passwd</arg>
+<arg>${ip}</arg>
+<arg>3306</arg>
+<arg>utf8</arg>
+</arguments>
+<msg timestamp="20180708 16:23:08.338" level="INFO">Connecting using : pymysql.connect(db=scott, user=tester, passwd=passwd, host=192.168.67.128, port=3306, charset=utf8) </msg>
+<status status="PASS" endtime="20180708 16:23:08.354" starttime="20180708 16:23:08.291"></status>
+</kw>
+<kw name="Run" library="OperatingSystem">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>taskkill /f /im chromedriver.exe</arg>
+</arguments>
+<msg timestamp="20180708 16:23:08.354" level="INFO">Running command 'taskkill /f /im chromedriver.exe 2&gt;&amp;1'.</msg>
+<status status="PASS" endtime="20180708 16:23:08.588" starttime="20180708 16:23:08.354"></status>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to</doc>
+<arguments>
+<arg>DELETE FROM ${table_name};</arg>
+</arguments>
+<msg timestamp="20180708 16:23:08.588" level="INFO">Executing : Execute SQL String  |  DELETE FROM order_item; </msg>
+<status status="PASS" endtime="20180708 16:23:08.588" starttime="20180708 16:23:08.588"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>1，打开网站</arg>
+</arguments>
+<msg timestamp="20180708 16:23:08.588" level="INFO">1，打开网站</msg>
+<status status="PASS" endtime="20180708 16:23:08.588" starttime="20180708 16:23:08.588"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>http://${ip}/mt</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20180708 16:23:08.588" level="INFO">Opening browser 'chrome' to base url 'http://192.168.67.128/mt'.</msg>
+<status status="PASS" endtime="20180708 16:23:11.325" starttime="20180708 16:23:08.588"></status>
+</kw>
+<status status="PASS" endtime="20180708 16:23:11.326" starttime="20180708 16:23:08.291"></status>
+</kw>
+<test id="s1-s1-t1" name="Case-01">
+<kw type="setup" name="case_setup">
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to</doc>
+<arguments>
+<arg>delete from order_item;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:11.332" level="INFO">Executing : Execute SQL String  |  delete from order_item; </msg>
+<status status="PASS" endtime="20180708 16:23:11.334" starttime="20180708 16:23:11.331"></status>
+</kw>
+<status status="PASS" endtime="20180708 16:23:11.335" starttime="20180708 16:23:11.330"></status>
+</kw>
+<kw name="Row Count" library="DatabaseLibrary">
+<doc>Uses the input `selectStatement` to query the database and returns the number of rows from the query. Set</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20180708 16:23:11.336" level="INFO">Executing : Row Count  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:11.338" level="INFO">${x} = 0</msg>
+<status status="PASS" endtime="20180708 16:23:11.338" starttime="20180708 16:23:11.336"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str($x+1)</arg>
+</arguments>
+<assign>
+<var>${y}</var>
+</assign>
+<msg timestamp="20180708 16:23:11.340" level="INFO">${y} = 1</msg>
+<status status="PASS" endtime="20180708 16:23:11.340" starttime="20180708 16:23:11.339"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>2，点击自动化测试课程</arg>
+</arguments>
+<msg timestamp="20180708 16:23:11.341" level="INFO">2，点击自动化测试课程</msg>
+<status status="PASS" endtime="20180708 16:23:11.341" starttime="20180708 16:23:11.341"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>link=自动化测试课程</arg>
+</arguments>
+<msg timestamp="20180708 16:23:11.342" level="INFO">Clicking element 'link=自动化测试课程'.</msg>
+<status status="PASS" endtime="20180708 16:23:11.462" starttime="20180708 16:23:11.342"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>partial link=接口</arg>
+</arguments>
+<msg timestamp="20180708 16:23:11.463" level="INFO">Clicking element 'partial link=接口'.</msg>
+<status status="PASS" endtime="20180708 16:23:11.877" starttime="20180708 16:23:11.462"></status>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<doc>Clicks a link identified by ``locator``.</doc>
+<arguments>
+<arg>自动化测试课程</arg>
+</arguments>
+<msg timestamp="20180708 16:23:11.878" level="INFO">Clicking link '自动化测试课程'.</msg>
+<status status="PASS" endtime="20180708 16:23:12.174" starttime="20180708 16:23:11.878"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>3，输入产品名称及数量</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.175" level="INFO">3，输入产品名称及数量</msg>
+<status status="PASS" endtime="20180708 16:23:12.175" starttime="20180708 16:23:12.175"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` is visible.</doc>
+<arguments>
+<arg>id=pay</arg>
+</arguments>
+<status status="PASS" endtime="20180708 16:23:12.214" starttime="20180708 16:23:12.176"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id=ProductName</arg>
+<arg>ipad</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.215" level="INFO">Typing text 'ipad' into text field 'id=ProductName'.</msg>
+<status status="PASS" endtime="20180708 16:23:12.336" starttime="20180708 16:23:12.214"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>name=Quantity</arg>
+<arg>123</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.337" level="INFO">Typing text '123' into text field 'name=Quantity'.</msg>
+<status status="PASS" endtime="20180708 16:23:12.440" starttime="20180708 16:23:12.337"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>4，点击提交</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.441" level="INFO">4，点击提交</msg>
+<status status="PASS" endtime="20180708 16:23:12.441" starttime="20180708 16:23:12.440"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=submitBtn</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.441" level="INFO">Clicking element 'id=submitBtn'.</msg>
+<status status="PASS" endtime="20180708 16:23:12.563" starttime="20180708 16:23:12.441"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>5，确认提交成功</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.565" level="INFO">5，确认提交成功</msg>
+<status status="PASS" endtime="20180708 16:23:12.565" starttime="20180708 16:23:12.564"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>5.1，确认前端提示信息正确</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.567" level="INFO">5.1，确认前端提示信息正确</msg>
+<status status="PASS" endtime="20180708 16:23:12.567" starttime="20180708 16:23:12.566"></status>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<doc>Waits until ``text`` appears on current page.</doc>
+<arguments>
+<arg>你购买了ipad，一共123件</arg>
+</arguments>
+<status status="PASS" endtime="20180708 16:23:12.596" starttime="20180708 16:23:12.568"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>你购买了ipad，一共123件</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.624" level="INFO">Current page contains text '你购买了ipad，一共123件'.</msg>
+<status status="PASS" endtime="20180708 16:23:12.624" starttime="20180708 16:23:12.596"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>id=msg</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20180708 16:23:12.668" level="INFO">${x} = 你购买了ipad，一共123件。</msg>
+<status status="PASS" endtime="20180708 16:23:12.668" starttime="20180708 16:23:12.625"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${x}</arg>
+<arg>你购买了ipad，一共123件。</arg>
+</arguments>
+<status status="PASS" endtime="20180708 16:23:12.670" starttime="20180708 16:23:12.669"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>5.2，确认前端购物车信息正确</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.671" level="INFO">5.2，确认前端购物车信息正确</msg>
+<status status="PASS" endtime="20180708 16:23:12.671" starttime="20180708 16:23:12.671"></status>
+</kw>
+<kw name="Select Frame" library="SeleniumLibrary">
+<doc>Sets frame identified by ``locator`` as the current frame.</doc>
+<arguments>
+<arg>fra</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.672" level="INFO">Selecting frame 'fra'.</msg>
+<status status="PASS" endtime="20180708 16:23:12.722" starttime="20180708 16:23:12.672"></status>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<arguments>
+<arg>buy</arg>
+<arg>产品:ipad,数量:123</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.723" level="INFO">Selecting options from selection list 'buy' by label 产品:ipad,数量:123.</msg>
+<status status="PASS" endtime="20180708 16:23:12.784" starttime="20180708 16:23:12.723"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>5.3，确认后台数据库订单表信息正确</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.787" level="INFO">5.3，确认后台数据库订单表信息正确</msg>
+<status status="PASS" endtime="20180708 16:23:12.787" starttime="20180708 16:23:12.787"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>comment</arg>
+<arg>PAUSE</arg>
+</arguments>
+<status status="PASS" endtime="20180708 16:23:12.787" starttime="20180708 16:23:12.787"></status>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<arguments>
+<arg>30</arg>
+<arg>1</arg>
+<arg>Check If Not Exists In Database</arg>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:12.789" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:12.789" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:12.789" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:12.792" starttime="20180708 16:23:12.789"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:13.793" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:13.793" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:13.798" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:13.798" starttime="20180708 16:23:13.793"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:14.799" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:14.799" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:14.804" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:14.804" starttime="20180708 16:23:14.799"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:15.804" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:15.804" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:15.809" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:15.809" starttime="20180708 16:23:15.804"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:16.809" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:16.809" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:16.814" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:16.814" starttime="20180708 16:23:16.809"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:17.814" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:17.814" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:17.819" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:17.822" starttime="20180708 16:23:17.814"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:18.823" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:18.823" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:18.828" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:18.828" starttime="20180708 16:23:18.823"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:19.828" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:19.828" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:19.833" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:19.833" starttime="20180708 16:23:19.828"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:20.834" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:20.834" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:20.839" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:20.839" starttime="20180708 16:23:20.834"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:21.839" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:21.839" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:21.844" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:21.844" starttime="20180708 16:23:21.839"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:22.845" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:22.845" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:22.847" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:22.850" starttime="20180708 16:23:22.845"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:23.850" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:23.850" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:23.855" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:23.855" starttime="20180708 16:23:23.850"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:24.857" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:24.857" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:24.859" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:24.862" starttime="20180708 16:23:24.857"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:25.868" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:25.868" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:25.868" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:25.868" starttime="20180708 16:23:25.868"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:26.882" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:26.882" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:26.882" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:26.882" starttime="20180708 16:23:26.882"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:27.882" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:27.882" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:27.882" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:27.882" starttime="20180708 16:23:27.882"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:28.896" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:28.896" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:28.896" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:28.896" starttime="20180708 16:23:28.896"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:29.896" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:29.896" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:29.896" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:29.896" starttime="20180708 16:23:29.896"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:30.910" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:30.910" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:30.910" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:30.910" starttime="20180708 16:23:30.910"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:31.925" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:31.925" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:31.925" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:31.925" starttime="20180708 16:23:31.925"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:32.940" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:32.940" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:32.940" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:32.940" starttime="20180708 16:23:32.940"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:33.941" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:33.941" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:33.941" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:33.941" starttime="20180708 16:23:33.941"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:34.941" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:34.941" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:34.941" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:34.941" starttime="20180708 16:23:34.941"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:35.955" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:35.955" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:35.955" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:35.955" starttime="20180708 16:23:35.955"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:36.970" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:36.970" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:36.970" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:36.970" starttime="20180708 16:23:36.970"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:37.984" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:37.984" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:37.984" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:37.984" starttime="20180708 16:23:37.984"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:38.999" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:38.999" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:38.999" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:38.999" starttime="20180708 16:23:38.999"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:40.013" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:40.013" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:40.013" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:40.013" starttime="20180708 16:23:40.013"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:41.028" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:41.028" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:41.028" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:41.028" starttime="20180708 16:23:41.028"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:42.042" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:42.042" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:42.042" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:42.042" starttime="20180708 16:23:42.042"></status>
+</kw>
+<kw name="Check If Not Exists In Database" library="DatabaseLibrary">
+<doc>This is the negation of `check_if_exists_in_database`.</doc>
+<arguments>
+<arg>select * from scott.order_item where name='ipad' and quantity=123;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.057" level="INFO">Executing : Check If Not Exists In Database  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:43.057" level="INFO">Executing : Query  |  select * from scott.order_item where name='ipad' and quantity=123; </msg>
+<msg timestamp="20180708 16:23:43.057" level="FAIL">Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:43.057" starttime="20180708 16:23:43.057"></status>
+</kw>
+<msg timestamp="20180708 16:23:43.057" level="FAIL">Keyword 'Check If Not Exists In Database' failed after retrying for 30 seconds. The last error was: Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</msg>
+<status status="FAIL" endtime="20180708 16:23:43.057" starttime="20180708 16:23:12.787"></status>
+</kw>
+<kw type="teardown" name="case_teardown">
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>Selects browser window matching ``locator``.</doc>
+<status status="PASS" endtime="20180708 16:23:43.072" starttime="20180708 16:23:43.057"></status>
+</kw>
+<status status="PASS" endtime="20180708 16:23:43.072" starttime="20180708 16:23:43.057"></status>
+</kw>
+<doc>xxx购物车主要功能</doc>
+<tags>
+<tag>high</tag>
+</tags>
+<status status="FAIL" endtime="20180708 16:23:43.072" critical="yes" starttime="20180708 16:23:11.326">Keyword 'Check If Not Exists In Database' failed after retrying for 30 seconds. The last error was: Expected to have have no rows from 'select * from scott.order_item where name='ipad' and quantity=123;' but got some rows : ((84, u'ipad', 123, 0),).</status>
+</test>
+<test id="s1-s1-t2" name="Case-02">
+<kw type="setup" name="case_setup">
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<doc>Executes the sqlString as SQL commands. Useful to pass arguments to your sql. Set optional input `sansTran` to</doc>
+<arguments>
+<arg>delete from order_item;</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.088" level="INFO">Executing : Execute SQL String  |  delete from order_item; </msg>
+<status status="PASS" endtime="20180708 16:23:43.088" starttime="20180708 16:23:43.088"></status>
+</kw>
+<status status="PASS" endtime="20180708 16:23:43.088" starttime="20180708 16:23:43.088"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>2，点击自动化测试课程</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.088" level="INFO">2，点击自动化测试课程</msg>
+<status status="PASS" endtime="20180708 16:23:43.088" starttime="20180708 16:23:43.088"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>css=body &gt; div.container &gt; div.masthead &gt; div &gt; div &gt; div &gt; ul &gt; li:nth-child(3) &gt; a</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.088" level="INFO">Clicking element 'css=body &gt; div.container &gt; div.masthead &gt; div &gt; div &gt; div &gt; ul &gt; li:nth-child(3) &gt; a'.</msg>
+<status status="PASS" endtime="20180708 16:23:43.190" starttime="20180708 16:23:43.088"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>3，输入产品名称及数量</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.191" level="INFO">3，输入产品名称及数量</msg>
+<status status="PASS" endtime="20180708 16:23:43.192" starttime="20180708 16:23:43.191"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>css=#ProductName</arg>
+<arg>ipad</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.193" level="INFO">Typing text 'ipad' into text field 'css=#ProductName'.</msg>
+<status status="PASS" endtime="20180708 16:23:43.278" starttime="20180708 16:23:43.192"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>xpath=//*[@id="Quantity"]</arg>
+<arg>123</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.279" level="INFO">Typing text '123' into text field 'xpath=//*[@id="Quantity"]'.</msg>
+<status status="PASS" endtime="20180708 16:23:43.349" starttime="20180708 16:23:43.279"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>4，点击提交</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.350" level="INFO">4，点击提交</msg>
+<status status="PASS" endtime="20180708 16:23:43.350" starttime="20180708 16:23:43.350"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>id=submitBtn</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.350" level="INFO">Clicking element 'id=submitBtn'.</msg>
+<status status="PASS" endtime="20180708 16:23:43.412" starttime="20180708 16:23:43.350"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>5，确认提交成功</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.413" level="INFO">5，确认提交成功</msg>
+<status status="PASS" endtime="20180708 16:23:43.414" starttime="20180708 16:23:43.413"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>5.1，确认前端提示信息正确</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.415" level="INFO">5.1，确认前端提示信息正确</msg>
+<status status="PASS" endtime="20180708 16:23:43.415" starttime="20180708 16:23:43.415"></status>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<doc>Verifies that current page contains ``text``.</doc>
+<arguments>
+<arg>你购买了ipad，一共123件</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.444" level="INFO">Current page contains text '你购买了ipad，一共123件'.</msg>
+<status status="PASS" endtime="20180708 16:23:43.444" starttime="20180708 16:23:43.416"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of element identified by ``locator``.</doc>
+<arguments>
+<arg>id=msg</arg>
+</arguments>
+<assign>
+<var>${x}</var>
+</assign>
+<msg timestamp="20180708 16:23:43.488" level="INFO">${x} = 你购买了ipad，一共123件。</msg>
+<status status="PASS" endtime="20180708 16:23:43.488" starttime="20180708 16:23:43.445"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${x}</arg>
+<arg>你购买了ipad，一共123件。</arg>
+</arguments>
+<status status="PASS" endtime="20180708 16:23:43.489" starttime="20180708 16:23:43.489"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>datepicker</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.490" level="INFO">Clicking element 'datepicker'.</msg>
+<status status="PASS" endtime="20180708 16:23:43.583" starttime="20180708 16:23:43.490"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[2]/a</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.584" level="INFO">Clicking element '//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[2]/a'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes screenshot of the current page and embeds it into log file.</doc>
+<msg timestamp="20180708 16:23:43.905" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20180708 16:23:43.905" starttime="20180708 16:23:43.604"></status>
+</kw>
+<msg timestamp="20180708 16:23:43.905" level="FAIL">Element with locator '//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[2]/a' not found.</msg>
+<status status="FAIL" endtime="20180708 16:23:43.905" starttime="20180708 16:23:43.583"></status>
+</kw>
+<kw type="teardown" name="case_teardown">
+<kw name="Select Window" library="SeleniumLibrary">
+<doc>Selects browser window matching ``locator``.</doc>
+<status status="PASS" endtime="20180708 16:23:43.905" starttime="20180708 16:23:43.905"></status>
+</kw>
+<status status="PASS" endtime="20180708 16:23:43.905" starttime="20180708 16:23:43.905"></status>
+</kw>
+<doc>xxx购物车主要功能</doc>
+<tags>
+<tag>high</tag>
+</tags>
+<status status="FAIL" endtime="20180708 16:23:43.905" critical="yes" starttime="20180708 16:23:43.072">Element with locator '//*[@id="ui-datepicker-div"]/table/tbody/tr[2]/td[2]/a' not found.</status>
+</test>
+<kw type="teardown" name="teardown" library="mtresource">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>恢复环境</arg>
+</arguments>
+<msg timestamp="20180708 16:23:43.921" level="INFO">恢复环境</msg>
+<status status="PASS" endtime="20180708 16:23:43.921" starttime="20180708 16:23:43.921"></status>
+</kw>
+<kw name="Disconnect From Database" library="DatabaseLibrary">
+<doc>Disconnects from the database.</doc>
+<msg timestamp="20180708 16:23:43.921" level="INFO">Executing : Disconnect From Database</msg>
+<status status="PASS" endtime="20180708 16:23:43.921" starttime="20180708 16:23:43.921"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20180708 16:23:46.510" starttime="20180708 16:23:43.921"></status>
+</kw>
+<status status="PASS" endtime="20180708 16:23:46.510" starttime="20180708 16:23:43.921"></status>
+</kw>
+<status status="FAIL" endtime="20180708 16:23:46.510" starttime="20180708 16:23:07.979"></status>
+</suite>
+<status status="FAIL" endtime="20180708 16:23:46.510" starttime="20180708 16:23:07.948"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="2" pass="0">Critical Tests</stat>
+<stat fail="2" pass="0">All Tests</stat>
+</total>
+<tag>
+<stat fail="2" pass="0">high</stat>
+</tag>
+<suite>
+<stat fail="2" id="s1" name="Mtprj" pass="0">Mtprj</stat>
+<stat fail="2" id="s1-s1" name="订单模块" pass="0">Mtprj.订单模块</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
