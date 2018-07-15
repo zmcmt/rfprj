@@ -1,7 +1,6 @@
 ﻿*** Settings ***
 Library           DebugLibrary
 Library           ExcelLibrary
-Library           lib/mylib.py
 Variables         lib/var.py
 
 *** Test Cases ***
